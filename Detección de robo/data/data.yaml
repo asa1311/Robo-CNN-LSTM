@@ -1,0 +1,2 @@
+{names: [Bicycle, Car, Handgun, Knife, Luggage and bags, Motorcycle, Person, Shotgun,
+    Truck], nc: 9, train: /kaggle/input/dataset/Dataset/images/train, val: /kaggle/input/dataset/Dataset/images/validation}
