@@ -26,3 +26,64 @@ Del comando principal de entrenamiento se configuró `--img`, `--batch-size`, `-
 ```py
 !python train.py --img 320 --batch-size 16 --epochs 75 --data data.yaml --weights yolov5n.pt
 ```
+
+## Sección 4.2
+
+El dataset utilizado para realizar la configuración de hiperparámetros es www.kaggle.com/dataset/f9c8c17f5079faccebff91e70446fe616cdb8218ea2918b432ce14faadb5871e
+y contiene las siguientes clases y funciones:
+
+### Clases
+
+- `RoboDataset(Dataset)`: Toma cada secuencia de imágenes y le aplica las transformaciones `Resize()`, `ToTensor()` y `Normalize()`.
+
+```py
+train_transform=transforms.Compose([
+      transforms.Resize((320,320)),
+      transforms.ToTensor(),  
+      transforms.Normalize([0.4335, 0.4272, 0.4201], [0.2497, 0.2502, 0.2524]),
+                            
+])
+
+valid_transform=transforms.Compose([
+      transforms.Resize((320,320)),
+      transforms.ToTensor(),  
+      transforms.Normalize([0.4335, 0.4272, 0.4201], [0.2497, 0.2502, 0.2524]),
+                           
+])
+```
+- `LSTM(nn.Module)`: Estructura principal del modelo propuesto.
+
+```py
+class LSTM(nn.Module):
+  def __init__(self,hidden_size,num_layers,num_classes):
+    super(LSTM, self).__init__()
+    
+    self.hidden_size=hidden_size
+    self.num_layers=num_layers
+    self.num_classes=num_classes
+    self.backbone = torch.hub.load('/kaggle/working/trainval/yolov5/yolov5/', 'custom', source='local', path='/kaggle/working/trainval/yolov5n_backbone.pt', force_reload=True, autoshape=False)
+    features=256
+    for param in self.backbone.parameters():
+      param.requires_grad = False
+    self.pool=nn.AdaptiveAvgPool2d(1)
+    self.flat=nn.Flatten()
+    self.lstm = nn.LSTM(input_size=features, hidden_size=hidden_size,num_layers=num_layers, batch_first=True)    
+    self.fc = nn.Linear(hidden_size, num_classes)
+
+  def forward(self,x):
+    batch, seq, C,H, W = x.size()
+    c_in = x.view(batch * seq, C, H, W)
+    bone_out = self.backbone(c_in)
+    pool_out=self.pool(bone_out)
+    flat_out=torch.flatten(pool_out)
+    r_out, (h_n, h_c) = self.lstm(flat_out.view(batch,seq,-1))
+    out = r_out[:, -1, :]
+    out=self.fc(out)
+    return out
+```
+
+### Funciones
+
+- `img_files(path)`: De una ruta que contiene una imagen con el formato `VXX -MYYY.png`, se extrae la etiqueta M  que indica el tipo de evento (Robo o No-Robo)
+- `reset_weights(m)`: Permite reiniciar los pesos de cada fold cuando se está realizando la validación cruzada.
+- `preprocess_data(data)`: 
