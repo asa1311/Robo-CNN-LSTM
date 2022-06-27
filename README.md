@@ -132,3 +132,8 @@ def matrix(output,pred_output):
 ## Secciones 4.4 y 4.5
 
 En Google Colab se implementó la inferencia del modelo. Con la función `preprocess_data_sliding_window(data,tag,enventanado)` se preprocesan las secuencias aplicando la técnica del enventanado, y con `criterio(video,length)` se aplican los criterios de evaluación todo o nada, el criterio de 3 y el criterio de 5. En `true_label(video)` se realiza la etiqueta real de cada sección de video y con `label_video(video)` el resultado de la clasificación al aplicar la inferencia de las secuencias y los criterios de evaluación.
+
+# Detección de robo
+## Requisitos
+
+- Implementando el programa en una Jetson Nano 4GB RAM con el sistema operativo Ubuntu 20.04 disponible en https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
