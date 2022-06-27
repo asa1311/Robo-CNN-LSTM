@@ -4,7 +4,7 @@ Contiene la ejecución de los códigos de entrenamiento de los modelos YOLO, la 
 
 ## Sección 4.1
 
-Para realizar el entrenamiento en Kaggle es necesario actualizar los siguientes paquetes para que funcione correctamente:
+Para realizar el entrenamiento de los modelos YOLO en Kaggle es necesario actualizar los siguientes paquetes para que funcione correctamente:
 
 ```py
 !add-apt-repository ppa:ubuntu-toolchain-r/test -y
