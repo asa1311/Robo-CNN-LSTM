@@ -102,6 +102,31 @@ La función a ser optimizada es `hyptuning` que incluye el error de validación 
 
 ## Sección 4.3
 
-El dataset de entrenamiento es el mismo de la Sección 4.2 pero utilizado en su totalidad para el entrenamiento, mientras que el dataset de prueba se encuentra disponible en: www.kaggle.com/dataset/2ef6e371d25133a91a6aa06306eb44accf244ac7776e26339614791f2eb55d75
+El dataset de entrenamiento es el mismo de la Sección 4.2 pero utilizado en su totalidad para el entrenamiento, mientras que el dataset de prueba se encuentra disponible en: www.kaggle.com/dataset/2ef6e371d25133a91a6aa06306eb44accf244ac7776e26339614791f2eb55d75. En la variable `self.LSTM` de la clase `LSTM(nn.Module)` se aplicó la regularización con el parámetro `dropout`.
+
+```py
+self.lstm = nn.LSTM(input_size=features, hidden_size=hidden_size,num_layers=num_layers, batch_first=True,dropout=0.3) 
+```
+
+La función `matrix(output,pred_output)` realiza la computación de la matriz de confusión y a partir de ella se calculan las demás métricas de evaluación.
+
+```py
+def matrix(output,pred_output):
+  tn,fp,fn,tp=confusion_matrix(np.array(output),np.array(pred_output)).ravel()
+  error_rate=(fp+fn)/(tp+fp+fn+tn)
+  accuracy=(tp+tn)/(tp+fp+fn+tn)
+  sensitivity=tp/(tp+fn)
+  specificity=tn/(tn+fp)
+  precision=tp/(tp+fp)
+  false_positive_rate=1-specificity
+
+  MCC=(tp*tn-fp*fn)/((tp+fp)*(tp+fn)*(tn+fp)*(tn+fn))**0.5
+  F_score=(2*precision*sensitivity)/(precision+sensitivity)
+
+  print("True positives: ",tp,"\nFalse positives: ",fp, "\nFalse negatives: ",fn,
+  "\nTrue negatives: ",tn,"\nError rate: ",error_rate,"\nAccuracy: ",accuracy,
+  "\nSensitivity: ",sensitivity,"\nSpecificity: ",specificity,"\nPrecision: ",
+  precision,"\nFalse positive rate: ",false_positive_rate,"\nMCC: ",MCC,"\nF-score: ",F_score)
+```
 
 ## Secciones 4.4 y 4.5
