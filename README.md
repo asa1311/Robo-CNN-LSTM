@@ -84,6 +84,24 @@ class LSTM(nn.Module):
 
 ### Funciones
 
-- `img_files(path)`: De una ruta que contiene una imagen con el formato `VXX -MYYY.png`, se extrae la etiqueta M  que indica el tipo de evento (Robo o No-Robo)
+- `img_files(path)`: 
 - `reset_weights(m)`: Permite reiniciar los pesos de cada fold cuando se está realizando la validación cruzada.
-- `preprocess_data(data)`: 
+- `preprocess_data(data)`: Se agrupan las rutas de las imágenes formando secuencias de 20 que contiene el formato `VXX -MYYY.png`, se extrae la etiqueta M  de la primera ruta de cada secuencia, que indica el tipo de evento es Robo o No-Robo y le asigna un valor numérico (1 o 0 respectivamente).
+
+### Configuración de Optuna
+
+```py
+study=optuna.create_study(direction="minimize")
+study.optimize(hyptuning,n_trials=3)
+print("Mejor resultado")
+versions=study.best_trial
+print(versions.values)
+print(versions.params)
+```
+La función a ser optimizada es `hyptuning` que incluye el error de validación promedio, los hiperparámetros a ajustar con Optuna son `hidden_size`, `num_layers` y `learning_rate` y en cada sesión se varía mamnualmente `batch_size` y `earlystop`. El número de pruebas está definido en `n_trials` y los mejores resultados por cada prueba se almacenan en `versions`. 
+
+## Sección 4.3
+
+El dataset de entrenamiento es el mismo de la Sección 4.2 pero utilizado en su totalidad para el entrenamiento, mientras que el dataset de prueba se encuentra disponible en: `www.kaggle.com/dataset/2ef6e371d25133a91a6aa06306eb44accf244ac7776e26339614791f2eb55d75`
+
+## Secciones 4.4 y 4.5
