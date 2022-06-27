@@ -102,6 +102,6 @@ La función a ser optimizada es `hyptuning` que incluye el error de validación 
 
 ## Sección 4.3
 
-El dataset de entrenamiento es el mismo de la Sección 4.2 pero utilizado en su totalidad para el entrenamiento, mientras que el dataset de prueba se encuentra disponible en: `www.kaggle.com/dataset/2ef6e371d25133a91a6aa06306eb44accf244ac7776e26339614791f2eb55d75`
+El dataset de entrenamiento es el mismo de la Sección 4.2 pero utilizado en su totalidad para el entrenamiento, mientras que el dataset de prueba se encuentra disponible en: www.kaggle.com/dataset/2ef6e371d25133a91a6aa06306eb44accf244ac7776e26339614791f2eb55d75
 
 ## Secciones 4.4 y 4.5
