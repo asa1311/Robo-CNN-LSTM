@@ -152,5 +152,29 @@ sudo pip3 install Jetson.GPIO
 - Si se quiere cambiar el sonido de alerta que se tiene por defecto es necesario la librería gTTS.
 
 ```sh
-pip install gTTS
+sudo pip install gTTS
 ```
+
+## Clases
+
+- `Videoframe`: Se realiza la lectura y visualización del video, el almacenamiento de los frames y se activa o desactiva el led.
+- `LSTM(nn.Module)`: La clase mencionada en la Sección 4.2 correspondiente al `Modelofinal.pth`, que incluye `yolov5n_backbone.pt`.
+- `Evaluation`: Realiza la inferencia y el criterio de evaluación para la detección del evento de robo.
+- `ImageFile`: Transforma el frame obtenido y le aplica las transformaciones `Resize`, `ToTensor` y `Normalize`.
+- `Sonido`: Reproduce la alerta `Aviso.mp3` , creada en `sonido.py`, cuando se produce por primera vez un robo.
+
+## Uso
+
+Para que se pueda reproducir el sonido de alerta: si el monitor tiene salida de audio, para activarlo en la Jetson Nano. 
+
+<img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Configuraci%C3%B3n%20Sonido.png" width="70%" height="70%">
+
+Mediante el terminal de Linux se ejecuta el siguiente comando:
+
+```sh
+python3 video.py --source V1.mp4
+```
+
+Donde `--source` es el video que se va a procesar. En este proyecto se usaron archivos MP4.
+
+<img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Uso%20programa.png" width="70%" height="70%">
