@@ -84,9 +84,9 @@ class LSTM(nn.Module):
 
 ### Funciones
 
-- `img_files(path)`: 
+- `img_files(path)`: Agrega todas las rutas de imágenes a una lista.
 - `reset_weights(m)`: Permite reiniciar los pesos de cada fold cuando se está realizando la validación cruzada.
-- `preprocess_data(data)`: Se agrupan las rutas de las imágenes formando secuencias de 20 que contiene el formato `VXX -MYYY.png`, se extrae la etiqueta M  de la primera ruta de cada secuencia, que indica el tipo de evento es Robo o No-Robo y le asigna un valor numérico (1 o 0 respectivamente).
+- `preprocess_data(data)`: Se agrupan las rutas de las imágenes formando secuencias de 20 que contiene el formato `VXX-MYYY.png`, se extrae la etiqueta M  de la primera ruta de cada secuencia, que indica el tipo de evento es Robo o No-Robo y le asigna un valor numérico (1 o 0 respectivamente).
 
 ### Configuración de Optuna
 
