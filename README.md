@@ -140,3 +140,17 @@ En Google Colab se implementó la inferencia del modelo. Con la función `prepro
 - Implementando el programa en una Jetson Nano 4GB RAM con el sistema operativo Ubuntu 20.04 disponible en https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
 
 <img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Jetson%20Nano.png" width="50%" height="50%">
+
+- En el archivo `requirements.txt` están las librerias necesarias para el backbone de YOLOV5n.
+
+- Para el funcionamiento del led en la Jetson nano es necesario la librería GPIO
+
+```sh
+sudo pip3 install Jetson.GPIO
+```
+
+- Si se quiere cambiar el sonido de alerta que se tiene por defecto es necesario la librería gTTS.
+
+```sh
+pip install gTTS
+```
