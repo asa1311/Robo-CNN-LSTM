@@ -1,3 +1,5 @@
+# Bloque metodológico del sistema de detección de eventos de robo
+<img src="Bloque metodologico.png">
 # Documentación del sistema de detección de eventos de robo
 
 Contiene la ejecución de los códigos de entrenamiento de los modelos YOLO, la configuración de hiperparámetros y entrenamiento e inferencia del modelo en los notebooks de Google Colab y Kaggle, junto al código fuente de la detección de robo en videos.
