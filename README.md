@@ -1,6 +1,7 @@
-# Bloque metodológico del sistema de detección de eventos de robo
-<img src="Bloque metodologico.png">
-# Documentación del sistema de detección de eventos de robo
+# <div align="center">Bloque metodológico del sistema de detección de eventos de robo</div>
+<div align="center"><img src="Bloque metodologico.png"></div>
+
+# <div align="center">Documentación</div>
 
 Contiene la ejecución de los códigos de entrenamiento de los modelos YOLO, la configuración de hiperparámetros y entrenamiento e inferencia del modelo en los notebooks de Google Colab y Kaggle, junto al código fuente de la detección de robo en videos.
 
@@ -84,6 +85,7 @@ class LSTM(nn.Module):
     return out
 ```
 
+
 ### Funciones
 
 - `img_files(path)`: Agrega todas las rutas de imágenes a una lista.
@@ -135,7 +137,11 @@ def matrix(output,pred_output):
 
 En Google Colab se implementó la inferencia del modelo. Con la función `preprocess_data_sliding_window(data,tag,enventanado)` se preprocesan las secuencias aplicando la técnica del enventanado, y con `criterio(video,length)` se aplican los criterios de evaluación todo o nada, el criterio de 3 y el criterio de 5. En `true_label(video)` se realiza la etiqueta real de cada sección de video y con `label_video(video)` el resultado de la clasificación al aplicar la inferencia de las secuencias y los criterios de evaluación.
 
+<div align="center"><img src="Criterio1.png"></div>
+
 # Detección de robo
+
+<div align="center"><img src="Secuencia.png"></div>
 
 ## Requisitos
 
@@ -164,6 +170,8 @@ sudo pip install gTTS
 - `Evaluation`: Realiza la inferencia y el criterio de evaluación para la detección del evento de robo.
 - `ImageFile`: Transforma el frame obtenido y le aplica las transformaciones `Resize`, `ToTensor` y `Normalize`.
 - `Sonido`: Reproduce la alerta `Aviso.mp3` , creada en `sonido.py`, cuando se produce por primera vez un robo.
+
+<div align="center"><img src="Main.png"></div>
 
 ## Uso
 
