@@ -147,7 +147,7 @@ En Google Colab se implementó la inferencia del modelo. Con la función `prepro
 
 - Implementando el programa en una Jetson Nano 4GB RAM con el sistema operativo Ubuntu 20.04 disponible en https://github.com/Qengineering/Jetson-Nano-Ubuntu-20-image
 
-<img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Jetson%20Nano.png" width="50%" height="50%">
+<div align="center"><img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Jetson%20Nano.png" width="50%" height="50%"></div>
 
 - En el archivo `requirements.txt` están las librerias necesarias para el backbone de YOLOV5n.
 
@@ -177,7 +177,7 @@ sudo pip install gTTS
 
 Para que se pueda reproducir el sonido de alerta: si el monitor tiene salida de audio, para activarlo en la Jetson Nano. 
 
-<img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Configuraci%C3%B3n%20Sonido.png" width="70%" height="70%">
+<div align="center"> <img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Configuraci%C3%B3n%20Sonido.png" width="70%" height="70%"></div>
 
 Mediante el terminal de Linux se ejecuta el siguiente comando:
 
@@ -187,4 +187,4 @@ python3 video.py --source V1.mp4
 
 Donde `--source` es el video que se va a procesar. En este proyecto se usaron archivos MP4.
 
-<img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Uso%20programa.png" width="70%" height="70%">
+<div align="center"><img src="https://raw.githubusercontent.com/asa1311/Robo-CNN-LSTM/main/Uso%20programa.png" width="70%" height="70%"> </div>
